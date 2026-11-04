@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+archive/
+archive.zip
+*.pdf
+.gemini/
+build_docx*.py
+test_*.py
+generate_*.py
+fix_*.py
+complete_project.py
+run_*.py
+charts/
