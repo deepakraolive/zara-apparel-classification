@@ -118,8 +118,6 @@ Using a Random Forest Regressor ($R^2 = 0.54$, MAE = ₹842.15), we quantify the
 ├── app.py                              # Interactive Streamlit Web Application
 ├── requirements.txt                    # Production environment dependencies
 ├── fast_fashion_zara_dataset.csv       # 4,179 sanitized catalog records
-├── INT234_Predictive_Analytics_Project_Report.docx  # Academic Project Report (LPU format)
-├── INT234_Predictive_Analytics_Project_Report.md    # Markdown Project Report
 └── README.md                           # Project documentation & benchmark overview
 ```
 
