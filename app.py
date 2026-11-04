@@ -412,7 +412,7 @@ elif page == "🏷️ Retail Pricing Valuation Engine":
         
         fig_drivers = px.bar(
             top_drivers, x="Importance_Pct", y="Feature", orientation='h',
-            color="Importance_Pct", color_continuous_scale="Mako",
+            color="Importance_Pct", color_continuous_scale="Tealgrn",
             labels={"Importance_Pct": "Relative Pricing Impact (%)", "Feature": "Engineered Attribute"}
         )
         fig_drivers.update_layout(yaxis=dict(autorange="reversed"), height=420, template="plotly_white")
