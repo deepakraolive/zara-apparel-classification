@@ -116,6 +116,14 @@ Using a Random Forest Regressor ($R^2 = 0.54$, MAE = ₹842.15), we quantify the
 ## 📂 Repository Structure
 
 ```text
+├── figures/                            # Publication-grade figures (300 DPI)
+│   ├── figure_1_eda_demographics_and_categories.png
+│   ├── figure_2_retail_price_distribution.png
+│   ├── figure_3_feature_ablation_progression.png
+│   ├── figure_4_multi_split_robustness.png
+│   ├── figure_5_confusion_matrices.png
+│   ├── figure_6_roc_auc_curves.png
+│   └── figure_7_pricing_driver_importances.png
 ├── Zara_Predictive_Analytics.ipynb     # Complete Google Colab Notebook (tested end-to-end)
 ├── app.py                              # Interactive Streamlit Web Application
 ├── requirements.txt                    # Production environment dependencies
