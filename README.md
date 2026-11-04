@@ -33,11 +33,11 @@ This research develops an end-to-end predictive analytics framework on **4,179 a
 This project includes a production-grade **Streamlit Web Application (`app.py`)** offering interactive model inference, live pricing estimation, and visual diagnostics.
 
 ### Web Application Architecture:
-1. **Executive Dashboard & Performance Metrics:** Real-time KPI counters, Plotly interactive price distributions, and department breakdowns.
-2. **Demographic Apparel Classifier:** Interactive sliders for price, description length, and fabric composition checkboxes to predict target demographics with real-time confidence probability gauges.
-3. **Retail Pricing Valuation Model (Project Differentiator):** Estimate the expected retail sale price (₹) of a garment configuration using an explainable Random Forest Regressor ($R^2 = 0.54$).
-4. **Model Benchmarks & Sensitivity Analysis:** Interactive Plotly curves tracing model performance from 85:15 down to 60:40 data-decay splits.
-5. **Crossover Error Diagnostics & Catalog Audit:** Searchable, filterable SKU table diagnosing why basic unisex merchandise (Shoes, Shirts, Jackets) blurs classification boundaries.
+1. **Collection Overview:** Catalog volume KPIs, empirical price density curves, and commercial department distribution.
+2. **Demographic Classification:** Real-time garment attribute inputs (price tier, description length, textile fiber indicators) predicting demographic collections with probability confidence gauges.
+3. **Garment Valuation Model (Core Differentiator):** Predictive retail pricing valuation engine ($R^2 = 0.54$) quantifying material surcharges and construction complexity.
+4. **Model Sensitivity & Benchmarks:** Data-decay sensitivity curves across 6 partition ratios (85:15 down to 60:40), 4-level feature ablation, and 5-fold cross-validation.
+5. **Crossover Diagnostics & Catalog Audit:** SKU-level failure mode diagnostics pinpointing why unisex merchandise (Shoes, Shirts, Jackets) creates classification overlap.
 
 ### Run the App Locally:
 ```bash
@@ -123,11 +123,8 @@ Using a Random Forest Regressor ($R^2 = 0.54$, MAE = ₹842.15), we quantify the
 
 ---
 
-## 👨‍💻 Author & Academic Credentials
+## 📌 Developer & Architecture Links
 
-* **Lead Researcher:** Deepak Rao
-* **Course:** INT234 (Predictive Analytics)
-* **Degree:** Bachelor of Technology in Computer Science & Engineering
-* **Institution:** Lovely Professional University (LPU), Punjab, India
-* **GitHub:** [@deepakraolive](https://github.com/deepakraolive)
-* **Interactive Colab:** [Run Notebook on Google Colab](https://colab.research.google.com/drive/1z_l8rwBcJZMH4ZyJ8qdzBP2pFifq3Dvp?usp=sharing)
+* **System Architecture:** Deepak Rao
+* **GitHub Repository:** [@deepakraolive/zara-apparel-classification](https://github.com/deepakraolive/zara-apparel-classification)
+* **Interactive Environment:** [Run Notebook on Google Colab](https://colab.research.google.com/drive/1z_l8rwBcJZMH4ZyJ8qdzBP2pFifq3Dvp?usp=sharing)

@@ -17,50 +17,120 @@ from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, confusion_matrix, roc_curve
 
 # ==============================================================================
-# PAGE CONFIGURATION & METADATA
+# PAGE CONFIGURATION & EDITORIAL BRANDING
 # ==============================================================================
 st.set_page_config(
-    page_title="Zara Retail Intelligence & Apparel ML",
+    page_title="ZARA | Enterprise Catalog Intelligence & Predictive Analytics",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS for executive aesthetic
+# Custom CSS for Zara's Signature Editorial Aesthetic
 st.markdown("""
 <style>
-    .main-header {
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-        color: white;
-        padding: 24px;
-        border-radius: 12px;
-        margin-bottom: 20px;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+    
+    /* Clean white editorial canvas */
+    .stApp {
+        background-color: #FFFFFF;
+        color: #111111;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
+    
+    /* Editorial header with stark hairline rule */
+    .zara-header {
+        border-bottom: 1px solid #111111;
+        padding-bottom: 22px;
+        margin-bottom: 30px;
+    }
+    .zara-pretitle {
+        font-size: 11px;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: #767676;
+        font-weight: 600;
+        margin-bottom: 6px;
+    }
+    .zara-title {
+        font-family: 'Cinzel', 'Times New Roman', serif;
+        font-size: 32px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #000000;
+        margin: 0 0 8px 0;
+    }
+    .zara-description {
+        font-size: 13px;
+        color: #555555;
+        letter-spacing: 0.02em;
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    /* Metric Cards: Minimalist, sharp, unrounded */
     .metric-card {
-        background: #f8fafc;
-        border: 1px solid #e2e8f0;
-        border-radius: 10px;
-        padding: 16px;
-        text-align: center;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        background: #FFFFFF;
+        border: 1px solid #E5E5E5;
+        border-radius: 0px;
+        padding: 20px 16px;
+        text-align: left;
+        transition: border-color 0.2s ease;
     }
-    .metric-val {
-        font-size: 26px;
-        font-weight: 800;
-        color: #0f172a;
+    .metric-card:hover {
+        border-color: #000000;
     }
     .metric-sub {
-        font-size: 12px;
-        color: #64748b;
+        font-size: 10px;
+        color: #767676;
         font-weight: 600;
+        letter-spacing: 0.16em;
         text-transform: uppercase;
+        margin-bottom: 8px;
     }
-    .badge-pill {
-        display: inline-block;
-        padding: 4px 10px;
-        border-radius: 9999px;
+    .metric-val {
+        font-family: 'Cinzel', 'Times New Roman', serif;
+        font-size: 28px;
+        font-weight: 500;
+        color: #000000;
+        line-height: 1.1;
+        margin-bottom: 6px;
+    }
+    .metric-tag {
         font-size: 11px;
-        font-weight: 600;
+        color: #222222;
+        font-weight: 500;
+        letter-spacing: 0.03em;
+    }
+    
+    /* Result card for inference & valuation */
+    .zara-result-card {
+        background-color: #FAFAFA;
+        border: 1px solid #111111;
+        border-radius: 0px;
+        padding: 24px;
+        margin-bottom: 18px;
+    }
+    
+    /* Sidebar styling */
+    [data-testid="stSidebar"] {
+        background-color: #FAFAFA;
+        border-right: 1px solid #EEEEEE;
+    }
+    
+    /* Button & link overrides */
+    .stButton > button, div.stDownloadButton > button {
+        background-color: #000000 !important;
+        color: #FFFFFF !important;
+        border-radius: 0px !important;
+        letter-spacing: 0.12em !important;
+        text-transform: uppercase !important;
+        font-size: 11px !important;
+        border: 1px solid #000000 !important;
+        font-weight: 500 !important;
+    }
+    .stButton > button:hover {
+        background-color: #262626 !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -152,77 +222,87 @@ def train_production_models(df):
 models_bundle = train_production_models(df)
 
 # ==============================================================================
-# SIDEBAR NAVIGATION & CREDENTIALS
+# SIDEBAR NAVIGATION (EDITORIAL MINIMALISM)
 # ==============================================================================
 with st.sidebar:
-    st.image("https://upload.wikimedia.org/wikipedia/commons/f/fd/Zara_Logo.svg", width=180)
-    st.markdown("### **Retail Intelligence & Apparel ML**")
-    st.markdown("End-to-end demographic classification and retail pricing valuation across **4,179 authentic Zara India catalog products**.")
-    st.markdown("---")
+    st.image("https://upload.wikimedia.org/wikipedia/commons/f/fd/Zara_Logo.svg", width=150)
+    
+    st.markdown("""
+    <div style="font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #888888; margin-top: 10px; font-weight: 600;">
+        COLLECTION INTELLIGENCE
+    </div>
+    <div style="font-size: 12px; color: #555555; line-height: 1.45; margin: 4px 0 16px 0;">
+        Demographic classification and retail valuation across 4,179 commercial garments.
+    </div>
+    <hr style="border: none; border-top: 1px solid #E5E5E5; margin: 12px 0 18px 0;">
+    """, unsafe_allow_html=True)
     
     page = st.radio(
-        "Navigation",
+        "NAVIGATION",
         [
-            "Executive Dashboard & Performance Metrics",
-            "Demographic Apparel Classifier",
-            "Retail Pricing Valuation Model",
-            "Model Benchmarks & Sensitivity Analysis",
-            "Crossover Error Diagnostics & Catalog Audit"
+            "Collection Overview",
+            "Demographic Classification",
+            "Garment Valuation Model",
+            "Model Sensitivity & Benchmarks",
+            "Crossover Diagnostics & Catalog Audit"
         ]
     )
     
-    st.markdown("---")
-    st.markdown("### Academic & Project Links")
     st.markdown("""
-    * **Researcher:** Deepak Rao
-    * **Program:** B.Tech CSE (Predictive Analytics)
-    * **Institution:** Lovely Professional University (LPU)
-    * **Course:** INT234 (Predictive Analytics)
-    """)
+    <hr style="border: none; border-top: 1px solid #E5E5E5; margin: 28px 0 14px 0;">
+    <div style="font-size: 10px; letter-spacing: 0.20em; text-transform: uppercase; color: #888888; margin-bottom: 8px; font-weight: 600;">
+        PLATFORM RESOURCES
+    </div>
+    """, unsafe_allow_html=True)
     
-    st.link_button("View GitHub Repository", "https://github.com/deepakraolive/zara-apparel-classification")
-    st.link_button("Open in Google Colab", "https://colab.research.google.com/drive/1z_l8rwBcJZMH4ZyJ8qdzBP2pFifq3Dvp?usp=sharing")
+    st.link_button("GitHub Repository", "https://github.com/deepakraolive/zara-apparel-classification")
+    st.link_button("Google Colab Environment", "https://colab.research.google.com/drive/1z_l8rwBcJZMH4ZyJ8qdzBP2pFifq3Dvp?usp=sharing")
 
 # ==============================================================================
-# PAGE 1: EXECUTIVE DASHBOARD & CATALOG AUDIT
+# PAGE 1: COLLECTION OVERVIEW
 # ==============================================================================
-if page == "Executive Dashboard & Performance Metrics":
+if page == "Collection Overview":
     st.markdown("""
-    <div class="main-header">
-        <h1 style="margin: 0; font-size: 28px;">Zara Retail Intelligence & Predictive Analytics Platform</h1>
-        <p style="margin: 6px 0 0 0; color: #94a3b8; font-size: 14px;">
-            Empirical machine learning benchmark, demographic segmentation, and pricing explainability on 4,000+ Fast-Fashion SKUs.
+    <div class="zara-header">
+        <div class="zara-pretitle">ZARA INDIA / COMMERCIAL INTELLIGENCE</div>
+        <h1 class="zara-title">COLLECTION OVERVIEW</h1>
+        <p class="zara-description">
+            Empirical demographic distribution, catalog volume metrics, and department pricing structures across 4,179 commercial garments.
         </p>
     </div>
     """, unsafe_allow_html=True)
     
-    # 5 KPI Cards
+    # 5 Metric Cards
     col1, col2, col3, col4, col5 = st.columns(5)
     with col1:
-        st.markdown('<div class="metric-card"><div class="metric-sub">Analyzed Catalog</div><div class="metric-val">4,179</div><span style="color:#059669; font-size:11px;">35 Departments</span></div>', unsafe_allow_html=True)
+        st.markdown('<div class="metric-card"><div class="metric-sub">Catalog Volume</div><div class="metric-val">4,179</div><span class="metric-tag">35 Departments</span></div>', unsafe_allow_html=True)
     with col2:
-        st.markdown('<div class="metric-card"><div class="metric-sub">Majority Baseline</div><div class="metric-val">64.71%</div><span style="color:#dc2626; font-size:11px;">Trivial Heuristic</span></div>', unsafe_allow_html=True)
+        st.markdown('<div class="metric-card"><div class="metric-sub">Majority Prior</div><div class="metric-val">64.71%</div><span class="metric-tag">Women\'s Segment</span></div>', unsafe_allow_html=True)
     with col3:
-        st.markdown('<div class="metric-card"><div class="metric-sub">Peak Split Accuracy</div><div class="metric-val">92.50%</div><span style="color:#2563eb; font-size:11px;">+27.79% Net Lift</span></div>', unsafe_allow_html=True)
+        st.markdown('<div class="metric-card"><div class="metric-sub">Peak Accuracy</div><div class="metric-val">92.50%</div><span class="metric-tag">+27.79% Net Lift</span></div>', unsafe_allow_html=True)
     with col4:
-        st.markdown('<div class="metric-card"><div class="metric-sub">5-Fold CV (Gradient Boost)</div><div class="metric-val">91.17%</div><span style="color:#059669; font-size:11px;">±0.75% Std (0.9788 AUC)</span></div>', unsafe_allow_html=True)
+        st.markdown('<div class="metric-card"><div class="metric-sub">5-Fold Stratified CV</div><div class="metric-val">91.17%</div><span class="metric-tag">±0.75% Std (0.9788 AUC)</span></div>', unsafe_allow_html=True)
     with col5:
-        st.markdown('<div class="metric-card"><div class="metric-sub">Data-Decay Spread</div><div class="metric-val">&lt; 1.83%</div><span style="color:#7c3aed; font-size:11px;">6 Ratios (85:15 to 60:40)</span></div>', unsafe_allow_html=True)
+        st.markdown('<div class="metric-card"><div class="metric-sub">Stability Spread</div><div class="metric-val">&lt; 1.83%</div><span class="metric-tag">6 Partition Schemes</span></div>', unsafe_allow_html=True)
     
     st.markdown("<br>", unsafe_allow_html=True)
     
-    # Interactive Visualizations (Row 1)
+    # Row 1 Visualizations (Monochrome & Warm Neutral)
     vcol1, vcol2 = st.columns(2)
     
     with vcol1:
         st.subheader("Figure 1A: Retail Pricing Density by Demographic Segment")
         fig_price = px.histogram(
             df, x="Price_INR", color="Gender", barmode="overlay", nbins=40,
-            color_discrete_map={"Men": "#1e3c72", "Women": "#d95f02"},
-            opacity=0.6, marginal="box",
+            color_discrete_map={"Men": "#111111", "Women": "#8C827A"},
+            opacity=0.7, marginal="box",
             labels={"Price_INR": "Retail Price in INR (₹)", "Gender": "Segment"}
         )
-        fig_price.update_layout(xaxis_range=[0, 15000], height=380, template="plotly_white")
+        fig_price.update_layout(
+            xaxis_range=[0, 15000], height=380, template="plotly_white",
+            paper_bgcolor="#FFFFFF", plot_bgcolor="#FFFFFF",
+            font=dict(family="Inter, sans-serif", size=12, color="#111111")
+        )
         st.plotly_chart(fig_price, use_container_width=True)
         
     with vcol2:
@@ -231,27 +311,32 @@ if page == "Executive Dashboard & Performance Metrics":
         top_cats.columns = ['Category', 'Product_Count']
         fig_cats = px.bar(
             top_cats, x="Product_Count", y="Category", orientation='h',
-            color="Product_Count", color_continuous_scale="Viridis",
+            color="Product_Count", color_continuous_scale="Greys",
             labels={"Product_Count": "Number of SKUs", "Category": "Department"}
         )
-        fig_cats.update_layout(yaxis=dict(autorange="reversed"), height=380, template="plotly_white")
+        fig_cats.update_layout(
+            yaxis=dict(autorange="reversed"), height=380, template="plotly_white",
+            paper_bgcolor="#FFFFFF", plot_bgcolor="#FFFFFF",
+            font=dict(family="Inter, sans-serif", size=12, color="#111111")
+        )
         st.plotly_chart(fig_cats, use_container_width=True)
         
     # Demographic & Pricing Summary Table
-    st.markdown("### Fast-Fashion Parametric Breakdown")
+    st.markdown("### Commercial Parametric Summary")
     p_summary = df.groupby('Gender')['Price_INR'].describe()[['count', 'mean', 'std', 'min', '50%', 'max']].round(2)
-    p_summary.columns = ['Count', 'Mean (₹)', 'Std Dev (₹)', 'Min (₹)', 'Median (₹)', 'Max (₹)']
+    p_summary.columns = ['Silhouettes', 'Mean (₹)', 'Std Dev (₹)', 'Min (₹)', 'Median (₹)', 'Max (₹)']
     st.dataframe(p_summary, use_container_width=True)
 
 # ==============================================================================
-# PAGE 2: DEMOGRAPHIC APPAREL CLASSIFIER
+# PAGE 2: DEMOGRAPHIC CLASSIFICATION
 # ==============================================================================
-elif page == "Demographic Apparel Classifier":
+elif page == "Demographic Classification":
     st.markdown("""
-    <div class="main-header">
-        <h1 style="margin: 0; font-size: 26px;">Live Demographic Apparel Classification Engine</h1>
-        <p style="margin: 6px 0 0 0; color: #94a3b8; font-size: 14px;">
-            Input custom fast-fashion garment parameters to predict demographic target (Women vs. Men) with real-time confidence scores.
+    <div class="zara-header">
+        <div class="zara-pretitle">ZARA MERCHANDISING / INFERENCE ENGINE</div>
+        <h1 class="zara-title">DEMOGRAPHIC CLASSIFICATION</h1>
+        <p class="zara-description">
+            Algorithmic demographic segmentation based on structural garment parameters and engineered textile compositions.
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -282,7 +367,7 @@ elif page == "Demographic Apparel Classifier":
             c_leather = st.checkbox("Genuine / Faux Leather", value=False)
             c_wool = st.checkbox("Wool / Knitwear", value=False)
             
-        selected_model_name = st.selectbox("Classifier Architecture:", ["Random Forest (Production)", "HistGradientBoosting", "Logistic Regression"])
+        selected_model_name = st.selectbox("Classification Architecture:", ["Random Forest (Production)", "HistGradientBoosting", "Logistic Regression"])
         
     with icol2:
         st.markdown("#### Real-Time Model Inference & Predictions")
@@ -307,60 +392,63 @@ elif page == "Demographic Apparel Classifier":
         pred_label = estimator.predict(input_data)[0]
         pred_probs = estimator.predict_proba(input_data)[0]
         
-        pred_gender = "Women's Apparel" if pred_label == 1 else "Men's Apparel"
+        pred_gender = "Women's Collection" if pred_label == 1 else "Men's Collection"
         women_prob = pred_probs[1] * 100
         men_prob = pred_probs[0] * 100
         
-        # Display Result Card
-        color_theme = "#d95f02" if pred_label == 1 else "#1e3c72"
+        # Display Result Card in Zara High-End Box
         st.markdown(f"""
-        <div style="background-color: #f8fafc; border-left: 6px solid {color_theme}; border-radius: 8px; padding: 20px; margin-bottom: 16px;">
-            <div style="color: #64748b; font-size: 13px; font-weight: 700; text-transform: uppercase;">Predicted Target Segment</div>
-            <div style="color: {color_theme}; font-size: 32px; font-weight: 800; margin: 4px 0;">{pred_gender}</div>
-            <div style="color: #334155; font-size: 14px;">Confidence: <strong>{max(women_prob, men_prob):.2f}%</strong></div>
+        <div class="zara-result-card">
+            <div class="metric-sub">CLASSIFIED DEMOGRAPHIC SEGMENT</div>
+            <div style="font-family: 'Cinzel', 'Times New Roman', serif; font-size: 32px; letter-spacing: 0.06em; text-transform: uppercase; color: #000000; margin: 4px 0 8px 0;">{pred_gender}</div>
+            <div style="font-size: 13px; color: #555555;">Model Confidence: <strong>{max(women_prob, men_prob):.2f}%</strong></div>
         </div>
         """, unsafe_allow_html=True)
         
-        # Probability Gauge
+        # Minimalist Editorial Probability Gauge
         fig_gauge = go.Figure(go.Indicator(
             mode="gauge+number",
             value=women_prob,
-            title={'text': "Women's Apparel Likelihood (%)", 'font': {'size': 15, 'color': '#1e293b'}},
+            title={'text': "Women's Collection Likelihood (%)", 'font': {'size': 13, 'color': '#111111', 'family': 'Inter'}},
             gauge={
-                'axis': {'range': [0, 100], 'tickwidth': 1},
-                'bar': {'color': "#d95f02"},
-                'bgcolor': "white",
+                'axis': {'range': [0, 100], 'tickwidth': 1, 'tickcolor': '#111111'},
+                'bar': {'color': "#111111"},
+                'bgcolor': "#FFFFFF",
                 'borderwidth': 1,
-                'bordercolor': "#cbd5e1",
+                'bordercolor': "#E5E5E5",
                 'steps': [
-                    {'range': [0, 50], 'color': '#e2e8f0'},
-                    {'range': [50, 100], 'color': '#ffedd5'}
+                    {'range': [0, 50], 'color': '#FAFAFA'},
+                    {'range': [50, 100], 'color': '#EFEFEF'}
                 ],
                 'threshold': {
-                    'line': {'color': "black", 'width': 2},
+                    'line': {'color': "#000000", 'width': 2},
                     'thickness': 0.75,
                     'value': 50
                 }
             }
         ))
-        fig_gauge.update_layout(height=260, margin=dict(l=20, r=20, t=30, b=10))
+        fig_gauge.update_layout(
+            height=260, margin=dict(l=20, r=20, t=30, b=10),
+            paper_bgcolor="#FFFFFF", plot_bgcolor="#FFFFFF"
+        )
         st.plotly_chart(fig_gauge, use_container_width=True)
         
         st.markdown(f"""
-        **Inference Diagnostic Takeaway:**
-        * Garment classified as **{pred_gender}** based on `{selected_cat}` department priors and a price point of **₹{selected_price:,}**.
-        * Fabric indicators (Leather: `{c_leather}`, Linen: `{c_linen}`, Denim: `{c_denim}`) adjust decision boundaries relative to catalog distributions.
+        **Inference Diagnostic Breakdown:**
+        * Silhouette classified into **{pred_gender}** based on `{selected_cat}` department priors and a price tier of **₹{selected_price:,}**.
+        * Fabric indicators (Leather: `{c_leather}`, Linen: `{c_linen}`, Denim: `{c_denim}`) actively shift decision boundaries relative to catalog distributions.
         """)
 
 # ==============================================================================
-# PAGE 3: RETAIL PRICING DRIVER ENGINE (PROJECT DIFFERENTIATOR)
+# PAGE 3: GARMENT VALUATION MODEL
 # ==============================================================================
-elif page == "Retail Pricing Valuation Model":
+elif page == "Garment Valuation Model":
     st.markdown("""
-    <div class="main-header">
-        <h1 style="margin: 0; font-size: 26px;">Zara India Retail Pricing Driver & Valuation Engine</h1>
-        <p style="margin: 6px 0 0 0; color: #94a3b8; font-size: 14px;">
-            Quantifying what factors drive Zara India garment pricing using an explainable Random Forest Regressor ($R^2 = 0.54$).
+    <div class="zara-header">
+        <div class="zara-pretitle">ZARA PRICING ARCHITECTURE / VALUATION</div>
+        <h1 class="zara-title">GARMENT VALUATION MODEL</h1>
+        <p class="zara-description">
+            Predictive retail valuation and sensitivity analysis across textile determinants and construction complexity ($R^2 = 0.54$).
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -368,14 +456,14 @@ elif page == "Retail Pricing Valuation Model":
     pcol1, pcol2 = st.columns([1, 1.2])
     
     with pcol1:
-        st.markdown("#### Estimate Retail Garment Valuation")
+        st.markdown("#### Garment Specification Inputs")
         dept_options = sorted(df['Category'].unique().tolist())
         r_cat = st.selectbox("Apparel Department:", dept_options, index=dept_options.index("BLAZERS") if "BLAZERS" in dept_options else 0)
         
         r_desc_len = st.slider("Product Description Verbosity (Chars):", 20, 1000, 320, 20)
         r_images = st.slider("Number of Catalog Photos:", 1, 10, 5)
         
-        st.markdown("##### Premium Material Surcharges:")
+        st.markdown("##### Material Composition Surcharges:")
         r_leather = st.checkbox("Includes Genuine / Faux Leather", value=False)
         r_linen = st.checkbox("100% Linen Composition", value=False)
         r_cotton = st.checkbox("High-Grade Cotton", value=True)
@@ -396,43 +484,48 @@ elif page == "Retail Pricing Valuation Model":
         predicted_price = models_bundle['rf_reg'].predict(reg_input)[0]
         
         st.markdown(f"""
-        <div style="background-color: #f0fdf4; border: 1px solid #86efac; border-radius: 8px; padding: 18px; margin-top: 14px; text-align: center;">
-            <div style="color: #166534; font-size: 13px; font-weight: 700; text-transform: uppercase;">Estimated Retail Price (Zara India)</div>
-            <div style="color: #15803d; font-size: 34px; font-weight: 800; margin: 4px 0;">₹{predicted_price:,.2f}</div>
-            <div style="color: #4ade80; font-size: 12px;">Predicted Price Range: ₹{max(390, predicted_price*0.85):,.0f} - ₹{predicted_price*1.15:,.0f}</div>
+        <div class="zara-result-card" style="text-align: center;">
+            <div class="metric-sub">ESTIMATED RETAIL PRICE (ZARA INDIA)</div>
+            <div style="font-family: 'Cinzel', 'Times New Roman', serif; font-size: 38px; font-weight: 500; color: #000000; margin: 6px 0;">₹{predicted_price:,.2f}</div>
+            <div style="font-size: 12px; color: #767676; letter-spacing: 0.04em;">RECOMMENDED RANGE: ₹{max(390, predicted_price*0.85):,.0f} &ndash; ₹{predicted_price*1.15:,.0f}</div>
         </div>
         """, unsafe_allow_html=True)
         
     with pcol2:
-        st.markdown("#### Top 10 Drivers of Garment Valuation (Feature Importance)")
+        st.markdown("#### Primary Drivers of Garment Valuation")
         top_drivers = models_bundle['pricing_importances'].head(10).reset_index()
         top_drivers.columns = ['Feature', 'Importance']
         top_drivers['Importance_Pct'] = top_drivers['Importance'] * 100
         
         fig_drivers = px.bar(
             top_drivers, x="Importance_Pct", y="Feature", orientation='h',
-            color="Importance_Pct", color_continuous_scale="Tealgrn",
+            color="Importance_Pct", color_continuous_scale="Greys",
             labels={"Importance_Pct": "Relative Pricing Impact (%)", "Feature": "Engineered Attribute"}
         )
-        fig_drivers.update_layout(yaxis=dict(autorange="reversed"), height=420, template="plotly_white")
+        fig_drivers.update_layout(
+            yaxis=dict(autorange="reversed"), height=420, template="plotly_white",
+            paper_bgcolor="#FFFFFF", plot_bgcolor="#FFFFFF",
+            font=dict(family="Inter, sans-serif", size=12, color="#111111")
+        )
         st.plotly_chart(fig_drivers, use_container_width=True)
         
         st.markdown("""
-        **Executive Commercial Takeaways:**
-        1. **Product Description Length explains 35.40% of pricing variance**: Technical garment descriptions proxy tailoring complexity and intricate stitching.
-        2. **Leather Textile Presence drives 11.51% premium**: The highest material surcharge in Zara India's catalog.
-        3. **Structured Outerwear**: Blazers & Jackets command top margin tiers across both demographic sections.
+        **Merchandising & Commercial Findings:**
+        1. **Product Description Length (35.40% importance):** Technical specification length proxies intricate stitching, multi-piece construction, and tailoring complexity.
+        2. **Leather Textile Presence (11.51% premium):** Genuine and vegan leather constitutes the single highest material surcharge across Zara's catalog.
+        3. **Structured Outerwear:** Tailored blazers and jackets command the highest margin tiers across both demographic sections.
         """)
 
 # ==============================================================================
-# PAGE 4: MODEL BENCHMARKS & MULTI-SPLIT DECAY
+# PAGE 4: MODEL SENSITIVITY & BENCHMARKS
 # ==============================================================================
-elif page == "Model Benchmarks & Sensitivity Analysis":
+elif page == "Model Sensitivity & Benchmarks":
     st.markdown("""
-    <div class="main-header">
-        <h1 style="margin: 0; font-size: 26px;">Model Benchmarks & Multi-Split Sensitivity Analysis</h1>
-        <p style="margin: 6px 0 0 0; color: #94a3b8; font-size: 14px;">
-            Ablation progression, data-decay robustness across 6 partition ratios, and 5-fold cross-validation.
+    <div class="zara-header">
+        <div class="zara-pretitle">STATISTICAL VALIDATION / BENCHMARKS</div>
+        <h1 class="zara-title">MODEL SENSITIVITY & STABILITY</h1>
+        <p class="zara-description">
+            Empirical stability across varying catalog partition schemes, ablation progression, and 5-fold cross-validation.
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -440,7 +533,7 @@ elif page == "Model Benchmarks & Sensitivity Analysis":
     tab1, tab2, tab3 = st.tabs(["Multi-Split Data-Decay Curves", "4-Level Ablation Progression", "5-Fold Stratified Cross-Validation"])
     
     with tab1:
-        st.subheader("Figure 5A & 5B: Performance Across 6 Train:Test Split Ratios")
+        st.subheader("Performance Across 6 Train:Test Partition Ratios")
         
         decay_data = pd.DataFrame([
             {'Split': '85:15', 'Model': 'Random Forest', 'Accuracy': 0.9250, 'F1-Score': 0.9416},
@@ -484,28 +577,36 @@ elif page == "Model Benchmarks & Sensitivity Analysis":
         with dcol1:
             fig_decay = px.line(
                 decay_data, x="Split", y="Accuracy", color="Model", markers=True,
-                color_discrete_sequence=['#10b981', '#3b82f6', '#f59e0b', '#8b5cf6', '#ef4444']
+                color_discrete_sequence=['#111111', '#555555', '#888888', '#B5B5B5', '#8C827A']
             )
-            fig_decay.update_layout(yaxis_range=[0.78, 0.95], height=380, template="plotly_white")
+            fig_decay.update_layout(
+                yaxis_range=[0.78, 0.95], height=380, template="plotly_white",
+                paper_bgcolor="#FFFFFF", plot_bgcolor="#FFFFFF",
+                font=dict(family="Inter, sans-serif", size=12, color="#111111")
+            )
             st.plotly_chart(fig_decay, use_container_width=True)
             
         with dcol2:
             spread_data = pd.DataFrame([
-                {'Model': 'Decision Tree', 'Spread (%)': 1.18},
                 {'Model': 'Random Forest', 'Spread (%)': 0.92},
+                {'Model': 'Decision Tree', 'Spread (%)': 1.18},
                 {'Model': 'Logistic Regression', 'Spread (%)': 1.49},
                 {'Model': 'K-Nearest Neighbors', 'Spread (%)': 1.83},
                 {'Model': 'Support Vector Machine', 'Spread (%)': 2.25}
             ])
             fig_spread = px.bar(
                 spread_data, x="Model", y="Spread (%)", color="Spread (%)",
-                color_continuous_scale="Reds", text_auto=".2f"
+                color_continuous_scale="Greys", text_auto=".2f"
             )
-            fig_spread.update_layout(height=380, template="plotly_white")
+            fig_spread.update_layout(
+                height=380, template="plotly_white",
+                paper_bgcolor="#FFFFFF", plot_bgcolor="#FFFFFF",
+                font=dict(family="Inter, sans-serif", size=12, color="#111111")
+            )
             st.plotly_chart(fig_spread, use_container_width=True)
             
     with tab2:
-        st.subheader("Figure 2: 4-Level Feature Ablation Progression")
+        st.subheader("4-Level Feature Ablation Progression")
         ablation_df = pd.DataFrame([
             {'Layer': 'Level 1: Majority Baseline', 'Accuracy (%)': 64.71, 'Macro-F1': 0.3929, 'Lift': '+0.00%'},
             {'Layer': 'Level 2: Category Only', 'Accuracy (%)': 83.73, 'Macro-F1': 0.8341, 'Lift': '+19.02%'},
@@ -515,15 +616,19 @@ elif page == "Model Benchmarks & Sensitivity Analysis":
         
         fig_abl = px.bar(
             ablation_df, x="Layer", y="Accuracy (%)", color="Accuracy (%)",
-            color_continuous_scale="Teal", text_auto=".2f"
+            color_continuous_scale="Greys", text_auto=".2f"
         )
-        fig_abl.add_hline(y=64.71, line_dash="dash", line_color="red", annotation_text="Baseline (64.71%)")
-        fig_abl.update_layout(yaxis_range=[50, 100], height=400, template="plotly_white")
+        fig_abl.add_hline(y=64.71, line_dash="dash", line_color="#111111", annotation_text="Baseline (64.71%)")
+        fig_abl.update_layout(
+            yaxis_range=[50, 100], height=400, template="plotly_white",
+            paper_bgcolor="#FFFFFF", plot_bgcolor="#FFFFFF",
+            font=dict(family="Inter, sans-serif", size=12, color="#111111")
+        )
         st.plotly_chart(fig_abl, use_container_width=True)
         st.dataframe(ablation_df, use_container_width=True)
         
     with tab3:
-        st.subheader("Figure 3: 5-Fold Stratified Cross-Validation Benchmark (Full N = 4,179)")
+        st.subheader("5-Fold Stratified Cross-Validation Benchmark (Full N = 4,179)")
         cv_df = pd.DataFrame([
             {'Algorithm': 'HistGradientBoosting', 'Accuracy (Mean ± Std)': '91.17% ± 0.75%', 'Macro-F1': '0.9029 ± 0.0084', 'ROC-AUC': '0.9788 ± 0.0017'},
             {'Algorithm': 'Random Forest', 'Accuracy (Mean ± Std)': '90.69% ± 0.72%', 'Macro-F1': '0.8988 ± 0.0078', 'ROC-AUC': '0.9737 ± 0.0034'},
@@ -537,12 +642,13 @@ elif page == "Model Benchmarks & Sensitivity Analysis":
 # ==============================================================================
 # PAGE 5: CROSSOVER ERROR ANALYSIS & CATALOG EXPLORER
 # ==============================================================================
-elif page == "Crossover Error Diagnostics & Catalog Audit":
+elif page == "Crossover Diagnostics & Catalog Audit":
     st.markdown("""
-    <div class="main-header">
-        <h1 style="margin: 0; font-size: 26px;">Crossover Apparel Error Diagnosis & Catalog Explorer</h1>
-        <p style="margin: 6px 0 0 0; color: #94a3b8; font-size: 14px;">
-            Diagnosing failure modes in unisex apparel departments (Shoes, Shirts, Jackets, Fragrances).
+    <div class="zara-header">
+        <div class="zara-pretitle">CATALOG AUDIT / FAILURE MODE ANALYSIS</div>
+        <h1 class="zara-title">CROSSOVER DIAGNOSTICS & SKU AUDIT</h1>
+        <p class="zara-description">
+            Quantifying classification boundaries and crossover ambiguity in unisex apparel departments.
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -560,7 +666,7 @@ elif page == "Crossover Error Diagnostics & Catalog Audit":
     st.dataframe(err_cat_df, use_container_width=True)
     
     st.markdown("""
-    **Root Cause Analysis:**
+    **Commercial Diagnostic Takeaways:**
     * **Footwear & Basic Shirts:** Account for over **75% of misclassifications**. Unisex white sneakers, leather loafers, and oversized button-down shirts carry identical pricing and fabric mixtures across Zara Men and Women departments.
     * **100% Precision Departments:** Zero errors occurred on strictly gendered silhouettes such as `SKIRTS`, `DRESSES`, and `WAISTCOATS`.
     """)
