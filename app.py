@@ -21,7 +21,6 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 # ==============================================================================
 st.set_page_config(
     page_title="Zara Retail Intelligence & Apparel ML",
-    page_icon="🛍️",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -162,32 +161,32 @@ with st.sidebar:
     st.markdown("---")
     
     page = st.radio(
-        "Navigation Menu:",
+        "Navigation",
         [
-            "📊 Executive Dashboard & KPIs",
-            "👗 Live Demographic Apparel Classifier",
-            "🏷️ Retail Pricing Valuation Engine",
-            "📈 Model Benchmarks & Multi-Split Decay",
-            "🔍 Crossover Error Analysis & Catalog Explorer"
+            "Executive Dashboard & Performance Metrics",
+            "Demographic Apparel Classifier",
+            "Retail Pricing Valuation Model",
+            "Model Benchmarks & Sensitivity Analysis",
+            "Crossover Error Diagnostics & Catalog Audit"
         ]
     )
     
     st.markdown("---")
-    st.markdown("### 🎓 Academic & Repo Links")
+    st.markdown("### Academic & Project Links")
     st.markdown("""
-    * **Student:** Deepak Rao
+    * **Researcher:** Deepak Rao
     * **Program:** B.Tech CSE (Predictive Analytics)
     * **Institution:** Lovely Professional University (LPU)
     * **Course:** INT234 (Predictive Analytics)
     """)
     
-    st.link_button("🐙 View GitHub Repository", "https://github.com/deepakraolive/zara-apparel-classification")
-    st.link_button("🚀 Run in Google Colab", "https://colab.research.google.com/drive/1z_l8rwBcJZMH4ZyJ8qdzBP2pFifq3Dvp?usp=sharing")
+    st.link_button("View GitHub Repository", "https://github.com/deepakraolive/zara-apparel-classification")
+    st.link_button("Open in Google Colab", "https://colab.research.google.com/drive/1z_l8rwBcJZMH4ZyJ8qdzBP2pFifq3Dvp?usp=sharing")
 
 # ==============================================================================
 # PAGE 1: EXECUTIVE DASHBOARD & CATALOG AUDIT
 # ==============================================================================
-if page == "📊 Executive Dashboard & KPIs":
+if page == "Executive Dashboard & Performance Metrics":
     st.markdown("""
     <div class="main-header">
         <h1 style="margin: 0; font-size: 28px;">Zara Retail Intelligence & Predictive Analytics Platform</h1>
@@ -245,9 +244,9 @@ if page == "📊 Executive Dashboard & KPIs":
     st.dataframe(p_summary, use_container_width=True)
 
 # ==============================================================================
-# PAGE 2: LIVE DEMOGRAPHIC APPAREL CLASSIFIER (INTERACTIVE DEMO)
+# PAGE 2: DEMOGRAPHIC APPAREL CLASSIFIER
 # ==============================================================================
-elif page == "👗 Live Demographic Apparel Classifier":
+elif page == "Demographic Apparel Classifier":
     st.markdown("""
     <div class="main-header">
         <h1 style="margin: 0; font-size: 26px;">Live Demographic Apparel Classification Engine</h1>
@@ -356,7 +355,7 @@ elif page == "👗 Live Demographic Apparel Classifier":
 # ==============================================================================
 # PAGE 3: RETAIL PRICING DRIVER ENGINE (PROJECT DIFFERENTIATOR)
 # ==============================================================================
-elif page == "🏷️ Retail Pricing Valuation Engine":
+elif page == "Retail Pricing Valuation Model":
     st.markdown("""
     <div class="main-header">
         <h1 style="margin: 0; font-size: 26px;">Zara India Retail Pricing Driver & Valuation Engine</h1>
@@ -428,7 +427,7 @@ elif page == "🏷️ Retail Pricing Valuation Engine":
 # ==============================================================================
 # PAGE 4: MODEL BENCHMARKS & MULTI-SPLIT DECAY
 # ==============================================================================
-elif page == "📈 Model Benchmarks & Multi-Split Decay":
+elif page == "Model Benchmarks & Sensitivity Analysis":
     st.markdown("""
     <div class="main-header">
         <h1 style="margin: 0; font-size: 26px;">Model Benchmarks & Multi-Split Sensitivity Analysis</h1>
@@ -438,7 +437,7 @@ elif page == "📈 Model Benchmarks & Multi-Split Decay":
     </div>
     """, unsafe_allow_html=True)
     
-    tab1, tab2, tab3 = st.tabs(["📊 Multi-Split Data-Decay Curves", "🏗️ 4-Level Ablation Progression", "🏆 5-Fold Stratified CV"])
+    tab1, tab2, tab3 = st.tabs(["Multi-Split Data-Decay Curves", "4-Level Ablation Progression", "5-Fold Stratified Cross-Validation"])
     
     with tab1:
         st.subheader("Figure 5A & 5B: Performance Across 6 Train:Test Split Ratios")
@@ -538,7 +537,7 @@ elif page == "📈 Model Benchmarks & Multi-Split Decay":
 # ==============================================================================
 # PAGE 5: CROSSOVER ERROR ANALYSIS & CATALOG EXPLORER
 # ==============================================================================
-elif page == "🔍 Crossover Error Analysis & Catalog Explorer":
+elif page == "Crossover Error Diagnostics & Catalog Audit":
     st.markdown("""
     <div class="main-header">
         <h1 style="margin: 0; font-size: 26px;">Crossover Apparel Error Diagnosis & Catalog Explorer</h1>
@@ -567,7 +566,7 @@ elif page == "🔍 Crossover Error Analysis & Catalog Explorer":
     """)
     
     st.markdown("---")
-    st.subheader("🔍 Interactive Catalog SKU Explorer")
+    st.subheader("Interactive Catalog SKU Explorer")
     
     fcol1, fcol2, fcol3 = st.columns(3)
     with fcol1:

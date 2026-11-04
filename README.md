@@ -32,12 +32,12 @@ This research develops an end-to-end predictive analytics framework on **4,179 a
 
 This project includes a production-grade **Streamlit Web Application (`app.py`)** offering interactive model inference, live pricing estimation, and visual diagnostics.
 
-### Features of the Web App:
-1. **📊 Executive Dashboard & Catalog Audit:** Real-time KPI counters, Plotly interactive price distributions, and department breakdowns.
-2. **👗 Live Demographic Apparel Classifier:** Interactive sliders for price, description length, and fabric composition checkboxes to predict target demographics with real-time confidence probability gauges.
-3. **🏷️ Retail Pricing Valuation Engine (Project Differentiator):** Estimate the expected retail sale price (₹) of a garment configuration using an explainable Random Forest Regressor ($R^2 = 0.54$).
-4. **📈 Model Benchmarks & Multi-Split Decay:** Interactive Plotly curves tracing model performance from 85:15 down to 60:40 data-decay splits.
-5. **🔍 Crossover Error Analysis & Catalog Explorer:** Searchable, filterable SKU table diagnosing why basic unisex merchandise (Shoes, Shirts, Jackets) blurs classification boundaries.
+### Web Application Architecture:
+1. **Executive Dashboard & Performance Metrics:** Real-time KPI counters, Plotly interactive price distributions, and department breakdowns.
+2. **Demographic Apparel Classifier:** Interactive sliders for price, description length, and fabric composition checkboxes to predict target demographics with real-time confidence probability gauges.
+3. **Retail Pricing Valuation Model (Project Differentiator):** Estimate the expected retail sale price (₹) of a garment configuration using an explainable Random Forest Regressor ($R^2 = 0.54$).
+4. **Model Benchmarks & Sensitivity Analysis:** Interactive Plotly curves tracing model performance from 85:15 down to 60:40 data-decay splits.
+5. **Crossover Error Diagnostics & Catalog Audit:** Searchable, filterable SKU table diagnosing why basic unisex merchandise (Shoes, Shirts, Jackets) blurs classification boundaries.
 
 ### Run the App Locally:
 ```bash
