@@ -1,10 +1,10 @@
 # Zara Retail Intelligence & Demographic Apparel Classification
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://deepakraolive-zara-apparel-classification-app-hne40p.streamlit.app/)
 [![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1z_l8rwBcJZMH4ZyJ8qdzBP2pFifq3Dvp?usp=sharing)
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io)
+[![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-181717.svg?logo=github)](https://github.com/deepakraolive/zara-apparel-classification)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.3%2B-orange.svg)](https://scikit-learn.org/)
-[![Course INT234](https://img.shields.io/badge/LPU-INT234%20Predictive%20Analytics-green.svg)](https://www.lpu.in/)
 
 > **End-to-End Retail Intelligence, Multimodal Feature Ablation, Multi-Split Robustness, and Pricing Driver Valuation on 4,000+ Fast-Fashion Products from Zara India.**
 
@@ -29,6 +29,8 @@ This research develops an end-to-end predictive analytics framework on **4,179 a
 ---
 
 ## 🖥️ Interactive Streamlit Web Application
+
+👉 **Live Web Application:** [https://deepakraolive-zara-apparel-classification-app-hne40p.streamlit.app/](https://deepakraolive-zara-apparel-classification-app-hne40p.streamlit.app/)
 
 This project includes a production-grade **Streamlit Web Application (`app.py`)** offering interactive model inference, live pricing estimation, and visual diagnostics.
 
@@ -123,8 +125,9 @@ Using a Random Forest Regressor ($R^2 = 0.54$, MAE = ₹842.15), we quantify the
 
 ---
 
-## 📌 Developer & Architecture Links
+## 📌 Project & Deployment Links
 
-* **System Architecture:** Deepak Rao
-* **GitHub Repository:** [@deepakraolive/zara-apparel-classification](https://github.com/deepakraolive/zara-apparel-classification)
-* **Interactive Environment:** [Run Notebook on Google Colab](https://colab.research.google.com/drive/1z_l8rwBcJZMH4ZyJ8qdzBP2pFifq3Dvp?usp=sharing)
+* **Live Streamlit Web Application:** [https://deepakraolive-zara-apparel-classification-app-hne40p.streamlit.app/](https://deepakraolive-zara-apparel-classification-app-hne40p.streamlit.app/)
+* **Google Colab Notebook:** [Zara_Predictive_Analytics.ipynb on Google Colab](https://colab.research.google.com/drive/1z_l8rwBcJZMH4ZyJ8qdzBP2pFifq3Dvp?usp=sharing)
+* **GitHub Repository:** [deepakraolive/zara-apparel-classification](https://github.com/deepakraolive/zara-apparel-classification)
+* **Lead Architect:** Deepak Rao

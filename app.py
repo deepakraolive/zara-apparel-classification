@@ -255,6 +255,7 @@ with st.sidebar:
     </div>
     """, unsafe_allow_html=True)
     
+    st.link_button("Live Web Application", "https://deepakraolive-zara-apparel-classification-app-hne40p.streamlit.app/")
     st.link_button("GitHub Repository", "https://github.com/deepakraolive/zara-apparel-classification")
     st.link_button("Google Colab Environment", "https://colab.research.google.com/drive/1z_l8rwBcJZMH4ZyJ8qdzBP2pFifq3Dvp?usp=sharing")
 
