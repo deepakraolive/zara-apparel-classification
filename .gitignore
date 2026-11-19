@@ -6,10 +6,15 @@ archive/
 archive.zip
 *.pdf
 .gemini/
-build_docx*.py
+build_*.py
 test_*.py
+test_*.docx
+*copy*.docx
 generate_*.py
 fix_*.py
 complete_project.py
 run_*.py
+expand_*.py
+make_*.py
+update_*.py
 charts/
